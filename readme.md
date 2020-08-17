@@ -7,7 +7,7 @@
 
 
 ## ⚙ Installation   
-+ 🛠 Django release: 3.1  
++ 🛠 Django release: 2.2.5 
 + 🛠 Python 3.8.4    
 + 🛠 HTML5, CSS3  
 + 🎨TailWind  
