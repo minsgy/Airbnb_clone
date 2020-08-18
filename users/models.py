@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser  # User 모델 커스텀을 위한 참조
 
 # Create your models here.
 class User(AbstractUser):
@@ -17,8 +17,8 @@ class User(AbstractUser):
         (GENDER_OTHER, "Other"),
     )
 
-    LANGUAGE_ENGLISH = "english"
-    LANGUAGE_KOREAN = "korean"
+    LANGUAGE_ENGLISH = "en"
+    LANGUAGE_KOREAN = "kr"
 
     LANGUAGE_CHOICES = (
         (LANGUAGE_ENGLISH, "en"),
@@ -37,12 +37,12 @@ class User(AbstractUser):
     bio = models.TextField(null=True, blank=True)
     birthdate = models.DateField(null=True)  # date 값만 보여줌.
     # DateTimeField() 시계처럼 보여줄 수 있음.
-    langauge = models.CharField(  # 사용 언어
+    language = models.CharField(  # 사용 언어
         choices=LANGUAGE_CHOICES, max_length=2, null=True, blank=True
     )
 
     currency = models.CharField(  # 사용하는 돈 종류
-        choices=CURRENCY_CHOICES, max_length=2, null=True, blank=True
+        choices=CURRENCY_CHOICES, max_length=3, null=True, blank=True
     )
 
-    superhost = models.BooleanField(default=False) # 체크박스로 나오게된다.
+    superhost = models.BooleanField(default=False)  # 체크박스로 나오게된다.
