@@ -30,7 +30,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-DJANGO_APPS = [
+# THIRD_PARTY_APPS = [] # 다른 사람이 만든 기능
+
+DJANGO_APPS = [  # 장고 기본 기능
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,7 +41,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = [
+PROJECT_APPS = [  # ADMIN이 만든 기능
     "users.apps.UsersConfig",
 ]
 

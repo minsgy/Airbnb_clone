@@ -30,19 +30,19 @@ class User(AbstractUser):
 
     CURRENCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_KRW, "KRW"))
 
-    avatar = models.ImageField(null=True, blank=True)  # 사진
+    avatar = models.ImageField(blank=True)  # 사진
     gender = models.CharField(
-        choices=GENDER_CHOICES, max_length=10, null=True, blank=True
+        choices=GENDER_CHOICES, max_length=10,  blank=True
     )  # 성별 - choices="이중튜플이 들어가야함."
-    bio = models.TextField(null=True, blank=True)
-    birthdate = models.DateField(null=True)  # date 값만 보여줌.
+    bio = models.TextField( blank=True)
+    birthdate = models.DateField(blank=True, null=True)  # date 값만 보여줌.
     # DateTimeField() 시계처럼 보여줄 수 있음.
     language = models.CharField(  # 사용 언어
-        choices=LANGUAGE_CHOICES, max_length=2, null=True, blank=True
+        choices=LANGUAGE_CHOICES, max_length=2,  blank=True
     )
 
     currency = models.CharField(  # 사용하는 돈 종류
-        choices=CURRENCY_CHOICES, max_length=3, null=True, blank=True
+        choices=CURRENCY_CHOICES, max_length=3,  blank=True
     )
 
     superhost = models.BooleanField(default=False)  # 체크박스로 나오게된다.
