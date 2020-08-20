@@ -30,7 +30,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-# THIRD_PARTY_APPS = [] # 다른 사람이 만든 기능
+THIRD_PARTY_APPS = [
+    "django_countries",
+]  # 패키지 기능
 
 DJANGO_APPS = [  # 장고 기본 기능
     "django.contrib.admin",
@@ -43,9 +45,11 @@ DJANGO_APPS = [  # 장고 기본 기능
 
 PROJECT_APPS = [  # ADMIN이 만든 기능
     "users.apps.UsersConfig",
+    "rooms.apps.RoomsConfig",
+    "core.apps.CoreConfig",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
