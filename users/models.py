@@ -32,17 +32,17 @@ class User(AbstractUser):
 
     avatar = models.ImageField(blank=True)  # 사진
     gender = models.CharField(
-        choices=GENDER_CHOICES, max_length=10,  blank=True
+        choices=GENDER_CHOICES, max_length=10, blank=True
     )  # 성별 - choices="이중튜플이 들어가야함."
-    bio = models.TextField( blank=True)
+    bio = models.TextField(blank=True)
     birthdate = models.DateField(blank=True, null=True)  # date 값만 보여줌.
     # DateTimeField() 시계처럼 보여줄 수 있음.
     language = models.CharField(  # 사용 언어
-        choices=LANGUAGE_CHOICES, max_length=2,  blank=True
+        choices=LANGUAGE_CHOICES, max_length=2, blank=True
     )
 
     currency = models.CharField(  # 사용하는 돈 종류
-        choices=CURRENCY_CHOICES, max_length=3,  blank=True
+        choices=CURRENCY_CHOICES, max_length=3, blank=True
     )
 
     superhost = models.BooleanField(default=False)  # 체크박스로 나오게된다.
