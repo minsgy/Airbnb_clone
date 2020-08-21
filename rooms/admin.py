@@ -4,8 +4,9 @@ from .models import Room, RoomType, Amenity, Facility, HouseRule, Photo
 # Register your models here.
 @admin.register(RoomType, Amenity, Facility, HouseRule)
 class ItemAdmin(admin.ModelAdmin):
-   
+
     """ Item Model """
+
     pass
 
 
@@ -27,11 +28,49 @@ class ItemAdmin(admin.ModelAdmin):
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
 
+    fieldsets = (
+        (
+            "Basic Info",
+            {"fields": ("name", "description", "country", "address", "price")},
+        ),
+        ("Times", {"fields": ("check_in", "check_out", "instant_book")},),
+        (
+            "More About the Spaces",
+            {"fields": ("amenities", "facilities", "house_rules")},
+        ),
+        ("Spaces", {"fields": ("guests", "beds", "bedrooms", "baths")}),
+        ("Last Details", {"fields": ("host",)}),
+    )
+    list_display = (
+        "name",
+        "country",
+        "city",
+        "price",
+        "guests",
+        "beds",
+        "bedrooms",
+        "baths",
+        "check_in",
+        "check_out",
+        "instant_book",
+    )
 
-    pass
+    list_filter = (
+        "instant_book",
+        "room_type",
+        "amenities",
+        "facilities",
+        "house_rules",
+        "city",
+        "country",
+    )
+
+    search_fields = ("=city", "^host__username")
+    filter_horizontal = ("amenities", "facilities", "house_rules")
 
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     """Photo model definition"""
+
     pass
