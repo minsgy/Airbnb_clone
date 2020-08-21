@@ -47,6 +47,10 @@ PROJECT_APPS = [  # ADMIN이 만든 기능
     "users.apps.UsersConfig",
     "rooms.apps.RoomsConfig",
     "core.apps.CoreConfig",
+    "reviews.apps.ReviewsConfig",
+    "reservations.apps.ReservationsConfig",
+    "lists.apps.ListsConfig",
+    "converstations.apps.ConverstationsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
