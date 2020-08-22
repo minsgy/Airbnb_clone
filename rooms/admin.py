@@ -27,7 +27,6 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
-
     fieldsets = (
         (
             "Basic Info",
@@ -53,8 +52,8 @@ class RoomAdmin(admin.ModelAdmin):
         "check_in",
         "check_out",
         "instant_book",
+        "count_amenities",  # 함수로 제작
     )
-
     list_filter = (
         "instant_book",
         "room_type",
@@ -67,6 +66,9 @@ class RoomAdmin(admin.ModelAdmin):
 
     search_fields = ("=city", "^host__username")
     filter_horizontal = ("amenities", "facilities", "house_rules")
+
+    def count_amenities(self, obj):
+        return obj.amenities.count()
 
 
 @admin.register(Photo)

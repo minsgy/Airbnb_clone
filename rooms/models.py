@@ -57,7 +57,7 @@ class Photo(core_models.TimeStempedModel):
 
     caption = models.CharField(max_length=80)
     file = models.ImageField()
-    room = models.ForeignKey("Room", on_delete=models.CASCADE)
+    room = models.ForeignKey("Room", related_name="photos", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.caption
@@ -85,15 +85,17 @@ class Room(core_models.TimeStempedModel):
     instant_book = models.BooleanField(default=False)  # 바로 예약 가능 여부
 
     # Host field - User
-    host = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    host = models.ForeignKey(
+        "users.User", related_name="rooms", on_delete=models.CASCADE
+    )
     # 외래키 연결, on_delete는 외래키에만 적용됨. 1:N
     room_type = models.ForeignKey(
-        RoomType, blank=True, on_delete=models.SET_NULL, null=True
+        RoomType, blank=True, on_delete=models.SET_NULL, related_name="rooms", null=True
     )
     # 1:N 관계, 한 사람이 하나의 객실 유형을 선택하게 함.
-    amenities = models.ManyToManyField("Amenity", blank=True)
-    facilities = models.ManyToManyField("Facility", blank=True)
-    house_rules = models.ManyToManyField("HouseRule", blank=True)
+    amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
+    facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
+    house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
     def __str__(self):
         return self.name
