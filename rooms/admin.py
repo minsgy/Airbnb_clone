@@ -7,7 +7,13 @@ class ItemAdmin(admin.ModelAdmin):
 
     """ Item Model """
 
-    pass
+    list_display = (
+        "name",
+        "used_by",
+    )
+
+    def used_by(self, obj):  # 해당 타입이 포함된 rooms 갯수
+        return obj.rooms.count()
 
 
 # @admin.register(Amenity)
@@ -53,6 +59,7 @@ class RoomAdmin(admin.ModelAdmin):
         "check_out",
         "instant_book",
         "count_amenities",  # 함수로 제작
+        "count_photos",
     )
     list_filter = (
         "instant_book",
@@ -70,9 +77,11 @@ class RoomAdmin(admin.ModelAdmin):
     def count_amenities(self, obj):
         return obj.amenities.count()
 
+    def count_photos(self, obj):
+        return obj.photos.count()  # related_name
+
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     """Photo model definition"""
-
     pass
