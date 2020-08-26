@@ -7,6 +7,7 @@ from .models import Review
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
 
-    """"""
-
-    pass
+    list_display = (
+        "__str__",
+        "rating_average",  # 함수 부르기도 가능하다!!
+    )

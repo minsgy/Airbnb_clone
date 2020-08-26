@@ -60,6 +60,7 @@ class RoomAdmin(admin.ModelAdmin):
         "instant_book",
         "count_amenities",  # 함수로 제작
         "count_photos",
+        "total_rating",  # review의 외래키를 역참조, 출력만 하게함.
     )
     list_filter = (
         "instant_book",
@@ -84,4 +85,5 @@ class RoomAdmin(admin.ModelAdmin):
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     """Photo model definition"""
+
     pass
