@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 from .models import Room, RoomType, Amenity, Facility, HouseRule, Photo
 
 # Register your models here.
@@ -86,4 +87,14 @@ class RoomAdmin(admin.ModelAdmin):
 class PhotoAdmin(admin.ModelAdmin):
     """Photo model definition"""
 
-    pass
+    list_display = (
+        "__str__",
+        "get_thumnail",
+    )
+
+    # admin register에서 2번째 인수는 해당 클래스 객체 가리킨다.
+    # Django Input 무시를 안전하다고 인식 시켜서, HTML에 적용하게 하는 함수 mark_safe()
+    def get_thumnail(self, obj):
+        return mark_safe(f'<img width="50px" src="{obj.file.url}" />')
+
+    get_thumnail.short_description = "Thumbnail"

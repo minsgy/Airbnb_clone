@@ -128,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
-
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 # 원래의 User 모델의 값을 Custom 해주기 위해, USER MODEL을 CUSTOM 한 User 모델 지정
 AUTH_USER_MODEL = "users.User"

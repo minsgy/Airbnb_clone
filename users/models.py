@@ -30,7 +30,7 @@ class User(AbstractUser):
 
     CURRENCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_KRW, "KRW"))
 
-    avatar = models.ImageField(blank=True)  # 사진
+    avatar = models.ImageField(upload_to="avatars", blank=True)  # 사진
     gender = models.CharField(
         choices=GENDER_CHOICES, max_length=10, blank=True
     )  # 성별 - choices="이중튜플이 들어가야함."
