@@ -100,6 +100,11 @@ class Room(core_models.TimeStempedModel):
     def __str__(self):
         return self.name
 
+    # Django model을 저장 할 때 부르는 함수, admin 뿐만 아니라 어디서든
+    def save(self, *args, **kwargs):
+        self.city = str.capitalize(self.city)  # 첫문자를 대문자로 바꿈.
+        super().save(*args, **kwargs)
+
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_ratings = 0

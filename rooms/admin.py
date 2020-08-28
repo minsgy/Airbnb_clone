@@ -17,6 +17,10 @@ class ItemAdmin(admin.ModelAdmin):
         return obj.rooms.count()
 
 
+class PhotoInline(admin.TabularInline):
+    model = Photo
+
+
 # @admin.register(Amenity)
 # class ItemAdmin(admin.ModelAdmin):
 #     pass
@@ -34,10 +38,13 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
+    inlines = (PhotoInline,)
+    # admin안에 admin 추가. Photo를 Room admin에서 관리가능
+
     fieldsets = (
         (
             "Basic Info",
-            {"fields": ("name", "description", "country", "address", "price")},
+            {"fields": ("name", "description", "country", "city", "address", "price")},
         ),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")},),
         (
@@ -72,9 +79,14 @@ class RoomAdmin(admin.ModelAdmin):
         "city",
         "country",
     )
-
+    raw_id_fields = ("host",)  # 긴 리스트를 위한 필드 출력법
     search_fields = ("=city", "^host__username")
     filter_horizontal = ("amenities", "facilities", "house_rules")
+
+    # admin 패널에서 저장 및 변경 한 값을 반환
+    # def save_model(self, request, obj, form, change):
+    #     print(obj, change)
+    #     super().save_model(request, obj, form, change) super() 반드시 불러야댐
 
     def count_amenities(self, obj):
         return obj.amenities.count()
