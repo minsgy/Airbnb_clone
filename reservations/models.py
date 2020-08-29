@@ -33,7 +33,7 @@ class Reservation(core_models.TimeStempedModel):
 
     def in_progress(self): # 방에 사람이 있는가?
         now = timezone.now().date()
-        return now > self.check_in and now < self.check_out  # boolean값 출력
+        return now >= self.check_in and now <= self.check_out  # boolean값 출력
 
     in_progress.boolean = True
 

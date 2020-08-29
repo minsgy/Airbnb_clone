@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 THIRD_PARTY_APPS = [
     "django_countries",
+    "django_seed",
 ]  # 패키지 기능
 
 DJANGO_APPS = [  # 장고 기본 기능
