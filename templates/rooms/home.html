@@ -1,8 +1,0 @@
-{% extends "base.html" %} {% block title %} Home {% endblock %} {% block body %}
-{% for room in page.object_list %}
-<h3>{{room.name}} - ${{room.price}}</h3>
-{% endfor %} {% if page.has_previous %}
-<a href="?page={{page.previous_page_number}}"> 뒷 페이지 </a> {% endif %}
-Page{{page.number}} of {{page.paginator.num_pages}} {% if page.has_next %}
-<a href="?page={{page.next_page_number}}"> 앞 페이지</a> {% endif %} {% endblock
-%}
