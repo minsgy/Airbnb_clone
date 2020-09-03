@@ -19,8 +19,9 @@ from django.conf import settings  # media 참조를 위한
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path("rooms/", include("rooms.urls", namespace="rooms")),
+    path("", include("core.urls", namespace="core")),
     path("admin/", admin.site.urls),
-    path("", include("rooms.urls", namespace="room")),
 ]
 
 if settings.DEBUG:

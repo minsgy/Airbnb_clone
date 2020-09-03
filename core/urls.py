@@ -1,12 +1,6 @@
-# from django.urls import path
-# from rooms import views as room_views
+from django.urls import path
+from rooms import views as room_views
 
+app_name = "core"
 
-# # main의 namespace와 동일 해야함.
-# # 정해진 instance
-# app_name = "core"
-
-# urlpatterns = [
-#     path("", room_views.all_rooms, name="home"),
-# ]
-
+urlpatterns = [path("", room_views.HomeView.as_view(), name="home")]
