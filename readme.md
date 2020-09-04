@@ -11,3 +11,25 @@
 + 🛠 Python 3.8.4    
 + 🛠 HTML5, CSS3  
 + 🎨TailWind  
+
+## ☹ 이 프로젝트를 사용하기 위한 과정 
+1. pipenv 설치
+```python
+pip install pipenv
+```
+2. 가상환경 생성
+```python
+pipenv --three # python3 을 사용할 수 있는 가상 환경 생성
+pipenv shell # 가상 환경 활성화
+```
+3. Django Project 시작
+```python
+django-admin startproject projectname . 
+# 이 방식은 협업에 좋은 구조화 방식을 만듬. 불필요한 폴더 생성X 
+```
+
+4. django app 생성
+```python
+django-admin startapp appname 
+# pip와 달리 django-admin 을 통해 생성함.
+```  
