@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %} Home {% endblock %} {% block body %} {% for room in rooms %}
 <h3>
-    <a href="{% url " rooms:detail " room.pk %}">
+    <a href="{% url "rooms:detail" room.pk %}">
         {{room.name}} / ${{room.price}}
     </a>
 </h3>

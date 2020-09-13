@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.urls import reverse
+
 # 모든 나라 fields 값 가져오기
 from django_countries.fields import CountryField
 
@@ -105,12 +107,15 @@ class Room(core_models.TimeStempedModel):
         self.city = str.capitalize(self.city)  # 첫문자를 대문자로 바꿈.
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("rooms:detail", kwargs={"pk": self.pk})
+
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_ratings = 0
-        
+
         if len(all_reviews) > 0:
             for review in all_reviews:
-                all_ratings += review.rating_average()  
-            return round(all_ratings / len(all_reviews)) # 소수점 반올림
+                all_ratings += review.rating_average()
+            return round(all_ratings / len(all_reviews))  # 소수점 반올림
         return 0
