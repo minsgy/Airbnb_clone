@@ -17,5 +17,9 @@ class RoomDetail(DetailView):  # 미친 개쉽다;; 리스트값 전부 반환..
     model = models.Room
 
 
+def search(request):
+    print(requset)
+    return render(request, "")
+
 #  page_kwarg = "potato"  # page 이름
 
