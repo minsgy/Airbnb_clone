@@ -47,8 +47,8 @@
         <input value="{{instant}}" type="checkbox" name="instant" id="instant" placeholder="Instant" {% if instant %} checked {% endif %} />
     </div>
     <div>
-        <label for="super_host">SuperHost ?</label>
-        <input value="{{super_host}}" type="checkbox" name="super_host" id="super_host" placeholder="Superhost" {% if super_host %} checked {% endif %}/>
+        <label for="superhost">SuperHost ?</label>
+        <input value="{{superhost}}" type="checkbox" name="superhost" id="superhost" placeholder="Superhost" {% if superhost %} checked {% endif %}/>
     </div>
     <div>
         <h3>Amenities</h3>
@@ -75,4 +75,9 @@
     <!-- button 태그가 form 안에 있으면 저절로 submit 처리를함. -->
     <button>Search</button>
 </form>
-{% endblock body %}
+
+<h3>Results</h3>
+
+{% for room in rooms %}
+<h3>{{room.name}}</h3>
+{% endfor %} {% endblock body %}
