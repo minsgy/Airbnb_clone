@@ -18,8 +18,10 @@ class RoomDetail(DetailView):  # 미친 개쉽다;; 리스트값 전부 반환..
 
 
 def search(request):
-    print(requset)
-    return render(request, "")
+    city = request.GET.get("city")
+    city = str.capitalize(city)
+    return render(request, "rooms/search.html", {"city": city})
+
 
 #  page_kwarg = "potato"  # page 이름
 
