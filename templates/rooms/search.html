@@ -43,6 +43,14 @@
         <input value="{{baths}}" type="number" name="baths" id="baths" placeholder="Baths" />
     </div>
     <div>
+        <label for="instant">Instant Book Only ?</label>
+        <input value="{{instant}}" type="checkbox" name="instant" id="instant" placeholder="Instant" {% if instant %} checked {% endif %} />
+    </div>
+    <div>
+        <label for="super_host">SuperHost ?</label>
+        <input value="{{super_host}}" type="checkbox" name="super_host" id="super_host" placeholder="Superhost" {% if super_host %} checked {% endif %}/>
+    </div>
+    <div>
         <h3>Amenities</h3>
         <ul>
             {% for amenity in amenities %}

@@ -28,9 +28,10 @@ def search(request):
     bedrooms = int(request.GET.get("bedrooms", 0))
     beds = int(request.GET.get("beds", 0))
     baths = int(request.GET.get("baths", 0))
-    s_amenities = request.GET.getlist("amenities")
-    s_facilities = request.GET.getlist("facilities")
-    print(s_amenities, s_facilities)
+    s_amenities = request.GET.getlist("amenities")  # array로 받음.
+    s_facilities = request.GET.getlist("facilities")  # array 로 받음.
+    instant = request.GET.get("instant", False)
+    super_host = request.GET.get("superhost", False)
     form = {  # form에서 오는 값
         "city": city,
         "s_room_type": room_type,
@@ -42,6 +43,8 @@ def search(request):
         "baths": baths,
         "s_amenities": s_amenities,
         "s_facilities": s_facilities,
+        "instant": instant,
+        "super_host": super_host,
     }
 
     room_types = models.RoomType.objects.all()
