@@ -99,7 +99,7 @@ def search(request):
         for s_facility in s_facilities:
             filter_args["facility__pk"] = int(s_facility)
 
-    rooms = models.Room.objects.filter(**filter_args)
+    rooms = models.Room.objects.filter(**filter_args)  # 배열 값 빼오기
     return render(request, "rooms/search.html", {**form, **choices, "rooms": rooms})
 
 
