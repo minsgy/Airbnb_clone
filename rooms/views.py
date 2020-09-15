@@ -21,12 +21,22 @@ class RoomDetail(DetailView):  # 미친 개쉽다;; 리스트값 전부 반환..
 def search(request):
     city = request.GET.get("city", "Anywhere")
     city = str.capitalize(city)
+    country = request.GET.get("country", "KR")
+    room_type = int(request.GET.get("room_types", "0"))
     room_types = models.RoomType.objects.all()
-    return render(
-        request,
-        "rooms/search.html",
-        {"city": city, "countries": countries, "room_type": room_types},
-    )
+
+    form = {  # form에서 오는 값
+        "city": city,
+        "s_room_type": room_type,
+        "s_country": country,
+    }
+
+    choices = {  # db에서 오는 값
+        "countries": countries,
+        "room_types": room_types,
+    }
+
+    return render(request, "rooms/search.html", {**form, **choices})
 
 
 #  page_kwarg = "potato"  # page 이름
