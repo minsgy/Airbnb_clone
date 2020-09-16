@@ -95,7 +95,3 @@ def search(request):
         form = forms.SearchForm()
 
     return render(request, "rooms/search.html", {"form": form})
-
-
-#  page_kwarg = "potato"  # page 이름
-
