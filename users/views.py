@@ -8,5 +8,9 @@ class LoginView(View):
         form = forms.LoginForm()
         return render(request, "users/login.html", {"form": form})
 
-    def post(self, reqeust):
+    def post(self, request):
         form = forms.LoginForm(request.POST)
+        if form.is_valid():  # clean_(data)은 리턴하지않으면 값이 삭제됌.
+
+            print(form.cleaned_data)
+        return render(request, "users/login.html", {"form": form})
