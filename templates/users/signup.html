@@ -1,0 +1,10 @@
+{% extends "base.html" %} 
+{% block title %} 회원 가입 {% endblock title %} 
+{% block search-bar %} {% endblock search-bar %} 
+{% block body %}
+<form method="POST" action="{% url 'users:signup' %}">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <button>Sign Up</button>
+</form>
+{% endblock body %}

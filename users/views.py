@@ -47,3 +47,9 @@ class LoginView(FormView):  # username을 필요로함!
 def log_out(request):
     logout(request)
     return redirect(reverse("core:home"))
+
+
+class SignUpView(FormView):
+    template_name = "users/signup.html"
+    form_class = forms.SignUpForm
+    success_url = reverse_lazy("core:home")  # 필요할 때 실행 하는것

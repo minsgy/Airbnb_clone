@@ -23,3 +23,7 @@ class LoginForm(forms.Form):
         except models.User.DoesNotExist:  # 실행 실패 시
             # 어디에 오류를 출력 할 지 정하기
             self.add_error("email", forms.ValidationError("User does not exist"))
+
+
+class SignUpForm(forms.Form):
+    pass
